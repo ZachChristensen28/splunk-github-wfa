@@ -4,6 +4,8 @@ Workflow actions for Splunk
 
 ## How to use
 
+**reference**: <https://docs.github.com/en/actions/using-workflows/reusing-workflows>
+
 ### Appinspect
 
 Required Input | Description
@@ -74,4 +76,25 @@ jobs:
         uses: ZachChristensen28/splunk-github-wfa/.github/workflows/docs.yml@e96bdc58732819aa2a1f2a03cb8794c92cacd9f6
         with:
             config-path: docs/requirements.txt
+```
+
+### Increment Build Number
+
+#### Example Configuration
+
+```yaml
+name: Increment Build caller
+
+on:
+  push:
+    branches:
+      - devel
+      - development
+    paths:
+        - "src/**"
+        - "!app.conf"
+
+jobs:
+  call-packaging-workflow:
+    uses: ZachChristensen28/splunk-github-wfa/.github/workflows/increment-build-number.yml@95c81c2bca6e0ad926e5c462ef003f6a6b30cbc0
 ```
