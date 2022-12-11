@@ -6,6 +6,11 @@ Workflow actions for Splunk
 
 ### Appinspect
 
+Required Input | Description
+-------------- | -----------
+`API_USER` | Action secret username for Splunk Appinspect API.
+`API_PASS` | Action secret password for Aplunk Appinspect API.
+
 #### Example Configuration
 
 ```yaml
@@ -46,6 +51,10 @@ jobs:
 ```
 
 ### Docs
+
+Required Input | Description
+-------------- | -----------
+`config-path` | path to requirements.txt.
 
 #### Example Configuration
 
