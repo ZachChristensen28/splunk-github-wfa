@@ -12,7 +12,7 @@ jobs:
         run: |
           n=$(egrep "^build" src/*/default/app.conf | awk '{ print $3 }')
           build_number=$((n+1))
-          sed -i "s/build = \w/build = $build_number/" src/*/default/app.conf
+          sed -i "s/build = \w*/build = $build_number/" src/*/default/app.conf
       - name: collect branch name
         id: branch_name
         run: echo "branch=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
