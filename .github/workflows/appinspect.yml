@@ -24,32 +24,17 @@ jobs:
         run: |
           cd src
           slim package -o ~/build/packages $(ls)
-      - name: Download and run helper script
-        run: |
-          mkdir -p ~/.local/bin
-          cd ~/.local/bin
-          wget https://raw.githubusercontent.com/ZachChristensen28/splunk-app-dev/master/validate.sh && chmod +x validate.sh
-      - name: Validate credentials
-        run: |
-          API_USER='${{ secrets.API_USER }}' API_PASS='${{ secrets.API_PASS }}' validate.sh -v
-      - name: Submit App for vetting
+      - name: Download and run appinspect script
         run: |
           cd ~/build/packages
-          validate.sh submit $(ls)
-      - name: Check Status
-        run: validate.sh status
-      - name: Get report
-        run: |
-          validate.sh report
+          curl -sSL https://raw.githubusercontent.com/ZachChristensen28/splunk-app-dev/511c3b4b5fcfeabaeb93d5c8d9842c3b0aa28736/appinspect.sh | API_USER='${{ secrets.API_USER }}' API_PASS='${{ secrets.API_PASS }}' APP_PATH=$(ls) bash
       - name: Collect report
         uses: actions/upload-artifact@v3
         with:
           name: Appinspect-report
-          path: ~/build/reports/
+          path: ~/reports/
       - name: Collect app package
         uses: actions/upload-artifact@v3
         with:
           name: App-package
           path: ~/build/packages/
-      - name: Check Appinspect for issues
-        run: validate.sh get_errors

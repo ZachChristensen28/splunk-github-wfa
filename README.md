@@ -11,7 +11,8 @@ Workflow actions for Splunk
 Required Input | Description
 -------------- | -----------
 `API_USER` | Action secret username for Splunk Appinspect API.
-`API_PASS` | Action secret password for Aplunk Appinspect API.
+`API_PASS` | Action secret password for Splunk Appinspect API.
+`APP_PATH` | Path to Splunk App/Add-on.
 
 #### Example Configuration
 
