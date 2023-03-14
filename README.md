@@ -12,7 +12,6 @@ Required Input | Description
 -------------- | -----------
 `API_USER` | Action secret username for Splunk Appinspect API.
 `API_PASS` | Action secret password for Splunk Appinspect API.
-`APP_PATH` | Path to Splunk App/Add-on.
 
 #### Example Configuration
 
@@ -29,7 +28,7 @@ on:
 
 jobs:
   call-packaging-workflow:
-    uses: ZachChristensen28/splunk-github-wfa/.github/workflows/appinspect.yml@154fb6bd5201e90183c99b40661cb931d61781b4
+    uses: ZachChristensen28/splunk-github-wfa/.github/workflows/appinspect.yml@61f404792eba6f8c22465b8a6c96034ee20f2518
     secrets:
       API_USER: ${{ secrets.API_USER }}
       API_PASS: ${{ secrets.API_PASS }}
