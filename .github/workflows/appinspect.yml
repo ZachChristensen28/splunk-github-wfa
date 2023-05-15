@@ -28,13 +28,14 @@ jobs:
         run: |
           cd ~/build/packages
           curl -sSL https://raw.githubusercontent.com/ZachChristensen28/splunk-app-dev/master/appinspect.sh | API_USER='${{ secrets.API_USER }}' API_PASS='${{ secrets.API_PASS }}' APP_PATH=$(ls) bash
-        continue-on-error: true
       - name: Collect report
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: Appinspect-report
           path: ~/reports/
       - name: Collect app package
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: App-package
